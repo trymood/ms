@@ -74,6 +74,30 @@ def show_plot():
         play_button["text"] = "Play"
 
 
+# Fereastra cu ecuația transformatei Fourier
+def show_fourier_equation():
+    eq_window = tk.Toplevel(root)
+    eq_window.title("Ecuația Transformatei Fourier")
+    eq_label = tk.Label(
+        eq_window,
+        text=(
+            "Transformata Fourier a unei funcții f(x) este definită ca:\n"
+            "\n"
+            "    F(w) = ∫ f(x) * e^(-i * w * x) dx\n"
+            "\n"
+            "Unde:\n"
+            "- w este frecvența unghiulară (în rad/s).\n"
+            "- i este unitatea imaginară.\n"
+            "- f(x) este semnalul în timp.\n"
+        ),
+        font=("Arial", 12),
+        justify="left",
+        padx=10,
+        pady=10,
+    )
+    eq_label.pack()
+
+
 # Quit application
 def quit_application():
     plt.close('all')
@@ -104,8 +128,11 @@ fourier_check.grid(row=1, column=0, columnspan=2, pady=5)
 play_button = ttk.Button(frm, text="Play", command=show_plot)
 play_button.grid(row=2, column=0, padx=5, pady=5)
 
+fourier_eq_button = ttk.Button(frm, text="Afișează Ecuația Transformatei", command=show_fourier_equation)
+fourier_eq_button.grid(row=2, column=1, padx=5, pady=5)
+
 quit_entry = ttk.Button(frm, text="Quit", command=quit_application)
-quit_entry.grid(row=2, column=1, padx=5, pady=5)
+quit_entry.grid(row=3, column=0, columnspan=2, pady=5)
 
 # Start GUI
 root.mainloop()
